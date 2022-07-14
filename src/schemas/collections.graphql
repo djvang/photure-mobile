@@ -1,0 +1,50 @@
+type Token @entity {
+  id: ID!
+  name: String! @search(by: term)
+  description: String!
+  mediaLink: String!
+  tag: String @search @search(by: term)
+  filetype: String! @search(by: term)
+  timestamp: String!
+  isRemix: Boolean!
+  parent: String
+  adam: String
+  token_uri: String!
+  token_address: String!
+  owner_of: String! @search(by: term)
+  token_id: String!
+  ipfs_URL: String!
+  identifyingString: String!
+  mintedTimeStamp: Int!
+  collectionID: Collection!
+  takenAt: String
+  isLive: Boolean
+}
+
+type Collection @entity {
+  id: ID!
+  collectionID: String!
+  name: String!
+  symbol: String!
+  isPublic: Boolean!
+  timestampOfLastMint: Int
+  items: [Token!] @derivedFrom(field: "collectionID")
+  owner_of: String!
+  paused: Boolean!
+  isBranded: Boolean!
+  brandedImage: String
+  Category: Category!
+  backgroundColor: String
+  emoji: String
+  story: String
+  # authorizedAccounts: [String!]?
+  minters: [String!]!
+  admins: [String!]!
+  createdAt: Int!
+}
+enum Category {
+  Public,
+  Personal,
+  Private,
+  Royalty,
+}
