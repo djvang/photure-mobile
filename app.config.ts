@@ -114,7 +114,19 @@ const config: ExpoConfig = {
   },
   name: 'Photure',
   orientation: 'portrait',
-  plugins: ['sentry-expo', '@react-native-firebase/app'],
+  plugins: [
+    'sentry-expo',
+    '@react-native-firebase/app',
+    './src/plugins/rn-firebase-fix',
+    [
+      'expo-build-properties',
+      {
+        ios: {
+          useFrameworks: 'static',
+        },
+      },
+    ],
+  ],
   scheme: 'myapp',
   slug: 'photure',
   splash: {
@@ -128,6 +140,17 @@ const config: ExpoConfig = {
   userInterfaceStyle: 'automatic',
   version: '4.0.0',
   web: {
+    config: {
+      firebase: {
+        apiKey: 'AIzaSyCJ7ywPn-a0wLwchxYACdIbgviNK9XszFk',
+        appId: '1:775824147773:web:9bf9f298f770e1aafdb154',
+        authDomain: 'photure-app.firebaseapp.com',
+        measurementId: 'G-5XP1TWBZE7',
+        messagingSenderId: '775824147773',
+        projectId: 'photure-app',
+        storageBucket: 'photure-app.appspot.com',
+      },
+    },
     favicon: './src/assets/images/favicon.png',
   },
 }

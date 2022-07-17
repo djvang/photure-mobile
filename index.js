@@ -1,3 +1,5 @@
+import 'expo-dev-client';
+
 /* eslint-disable */
 
 const { Platform } = require("react-native");

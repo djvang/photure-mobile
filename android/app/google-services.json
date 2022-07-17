@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "775824147773",
+    "project_id": "photure-app",
+    "storage_bucket": "photure-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:775824147773:android:1451cc5b0069bcfefdb154",
+        "android_client_info": {
+          "package_name": "com.app.photure"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "775824147773-06odnbuu73pd2c306sl6eje5j8b0tstk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5WyVDTZwy-sbTTzLpAim2httki59quwQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "775824147773-06odnbuu73pd2c306sl6eje5j8b0tstk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "775824147773-r8q68n6cmcl1efkfrbpuppqu0gck40m4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.app.photure",
+                "app_store_id": "1583445170"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
