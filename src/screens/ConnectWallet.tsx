@@ -1,4 +1,6 @@
+import { Orbis } from '@orbisclub/orbis-sdk'
 import React from 'react'
+import WalletConnectProvider from '@walletconnect/web3-provider'
 import { useSetRecoilState } from 'recoil'
 import { useWalletConnect } from '@walletconnect/react-native-dapp'
 import { userWalletState } from '../state/WalletState'
@@ -9,19 +11,39 @@ import { Text, View } from '../components/Themed'
 //   return `${address.slice(0, 6)}...${address.slice(address.length - 4, address.length)}`
 // }
 
+const orbis = new Orbis()
+
 export default function ConnectWallet() {
   const connector = useWalletConnect()
-  const setWallet = useSetRecoilState(userWalletState)
 
   const connectWallet = React.useCallback(async () => {
+    const provider = new WalletConnectProvider({
+      chainId: 1,
+      connector: connector,
+      qrcode: false,
+      rpc: {
+        1: 'https://main-rpc.linkpool.io',
+      },
+    })
+
+    await provider.enable()
+    const res = await orbis.connect(provider)
+
+    // if (res.status == 200) {
+    //   console.log(res.did)
+    // } else {
+    //   console.log('Error connecting to Ceramic: ', res)
+    //   // alert('Error connecting to Ceramic.')
+    // }
+
     const wc = await connector.connect({
       chainId: 137,
     })
 
-    setWallet({
-      origin: 'walletconnect',
-      walletAddress: wc.accounts[0],
-    })
+    // setWallet({
+    //   origin: 'walletconnect',
+    //   walletAddress: wc.accounts[0],
+    // })
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [connector])
