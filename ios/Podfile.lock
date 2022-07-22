@@ -505,7 +505,7 @@ PODS:
   - TcpSockets (4.0.0):
     - React
   - Unflow (1.9.3)
-  - unflow-react-native (1.9.3):
+  - unflow-react-native (1.9.4):
     - React-Core
     - Unflow (= 1.9.3)
   - Yoga (1.14.0)
@@ -785,7 +785,7 @@ SPEC CHECKSUMS:
   Sentry: 9e8ec837fa37e7b397f19f75542800461b138d0e
   TcpSockets: 4ef55305239923b343ed0a378b1fac188b1373b0
   Unflow: a350df109a7678ecd4ba771cca2e52bec080abb7
-  unflow-react-native: 916696787ce6d82e07c2999caa771d2f6009d537
+  unflow-react-native: f4bc948efb3f25027f5536e97429a52d1defac19
   Yoga: e6ecf3fa25af9d4c87e94ad7d5d292eedef49749
 
 PODFILE CHECKSUM: 51eb81b93e6bf51e78c01331c78ac9557774d26e

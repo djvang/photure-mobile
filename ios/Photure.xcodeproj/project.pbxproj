@@ -157,7 +157,7 @@
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
 				B08ECD1F937E407E8F73AD47 /* Upload Debug Symbols to Sentry */,
 				4A3728530D1159551754FED8 /* [CP-User] [RNFB] Core Configuration */,
-				47A56B07F2CAEC2791BD4A08 /* [CP] Embed Pods Frameworks */,
+				9CD5D89CC292E4695857F95A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -252,24 +252,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		47A56B07F2CAEC2791BD4A08 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Photure/Pods-Photure-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Unflow/UnflowUI.framework/UnflowUI",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UnflowUI.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Photure/Pods-Photure-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		4A3728530D1159551754FED8 /* [CP-User] [RNFB] Core Configuration */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -307,6 +289,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Photure/Pods-Photure-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9CD5D89CC292E4695857F95A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Photure/Pods-Photure-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Unflow/UnflowUI.framework/UnflowUI",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UnflowUI.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Photure/Pods-Photure-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B08ECD1F937E407E8F73AD47 /* Upload Debug Symbols to Sentry */ = {

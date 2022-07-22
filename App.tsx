@@ -5,6 +5,7 @@ import React from 'react'
 import { RecoilRoot } from 'recoil'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { StatusBar } from 'expo-status-bar'
+import Unflow from 'unflow-react-native'
 import useColorScheme from './src/hooks/useColorScheme'
 
 Sentry.init({
@@ -16,6 +17,13 @@ Sentry.init({
 
 export default function App() {
   const colorScheme = useColorScheme()
+
+  Unflow.initialize('923d909f997f374bca79b7c9400fa331', true)
+  Unflow.sync()
+
+  // const client = createClient({
+  //   url: 'https://api.thegraph.com/subgraphs/name/photure/photure-collections',
+  // })
 
   return (
     <SafeAreaProvider>

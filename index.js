@@ -1,4 +1,7 @@
-import 'expo-dev-client';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+// eslint-disable-next-line no-unused-vars
+import TextEncoder from 'text-encoding-polyfill'
+import 'expo-dev-client'
 
 /* eslint-disable */
 
