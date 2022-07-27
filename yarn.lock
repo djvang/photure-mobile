@@ -2486,10 +2486,10 @@
   resolved "https://registry.yarnpkg.com/@opentelemetry/semantic-conventions/-/semantic-conventions-1.4.0.tgz#facf2c67d6063b9918d5a5e3fdf25f3a30d547b6"
   integrity sha512-Hzl8soGpmyzja9w3kiFFcYJ7n5HNETpplY6cb67KR4QPlxp4FTTresO06qXHgHDhyIInmbLJXuwARjjpsKYGuQ==
 
-"@orbisclub/orbis-sdk@^0.2.56":
-  version "0.2.56"
-  resolved "https://registry.yarnpkg.com/@orbisclub/orbis-sdk/-/orbis-sdk-0.2.56.tgz#46a7df7577a49f998992d759c83059815be426e4"
-  integrity sha512-+AIdBVWMFTKm79dMS67OVzZ1Q5UEqaK0TdDuhV0PF7UtqTGRf6WV13BfwnQbba61c7rlOUrFJXAffzHIhKw6hg==
+"@orbisclub/orbis-sdk-react-native@^0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@orbisclub/orbis-sdk-react-native/-/orbis-sdk-react-native-0.0.3.tgz#b5650008ca3a28015d9622263610b6e984afdbb1"
+  integrity sha512-+W2Bp4kio30/vMCkmvwsYsbmevhgrdxf3hfSi4HleCzSZdsnxaAcfO43wCUlTImmCKEV5qXXznqfUlRdq1VK/A==
   dependencies:
     "@ceramicnetwork/blockchain-utils-linking" "^2.0.4"
     "@ceramicnetwork/http-client" "^2.0.4"
@@ -2497,6 +2497,7 @@
     "@ethersproject/bytes" "^5.6.1"
     "@ethersproject/strings" "^5.6.1"
     "@glazed/did-session" "^0.1.1"
+    "@react-native-async-storage/async-storage" "^1.17.7"
     "@supabase/supabase-js" "^1.35.3"
     buffer "^6.0.3"
     dids "^3.2.0"
@@ -2890,6 +2891,13 @@
   dependencies:
     "@react-aria/ssr" "^3.0.1"
     "@react-aria/utils" "^3.3.0"
+
+"@react-native-async-storage/async-storage@^1.17.7":
+  version "1.17.7"
+  resolved "https://registry.yarnpkg.com/@react-native-async-storage/async-storage/-/async-storage-1.17.7.tgz#f9213e8cc6202a8c29df5a4da1db588f3b0fa8a9"
+  integrity sha512-mDtWhCcpxzrZhA95f6zi0pnBsjBEZW1LKZWfxVXG0UfaWpPxDBCKowNk2xjRTytckZeVhjmPJPtBU+8QNQcR0A==
+  dependencies:
+    merge-options "^3.0.4"
 
 "@react-native-async-storage/async-storage@~1.15.0":
   version "1.15.14"

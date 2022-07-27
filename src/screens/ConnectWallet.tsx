@@ -1,9 +1,20 @@
-import { Orbis } from '@orbisclub/orbis-sdk'
+import { Orbis } from '@orbisclub/orbis-sdk-react-native'
 import React from 'react'
 import WalletConnectProvider from '@walletconnect/web3-provider'
 import { useSetRecoilState } from 'recoil'
 import { useWalletConnect } from '@walletconnect/react-native-dapp'
 import { userWalletState } from '../state/WalletState'
+import {
+  ICreateSessionOptions,
+  IJsonRpcRequest,
+  IJsonRpcResponseError,
+  IJsonRpcResponseSuccess,
+  IRequestOptions,
+  ISessionError,
+  ISessionStatus,
+  ITxData,
+  IUpdateChainParams,
+} from '@walletconnect/types'
 import { StyleSheet, TouchableOpacity } from 'react-native'
 import { Text, View } from '../components/Themed'
 
@@ -19,26 +30,116 @@ export default function ConnectWallet() {
   const connectWallet = React.useCallback(async () => {
     const provider = new WalletConnectProvider({
       chainId: 1,
-      connector: connector,
+      connector: {
+        accounts: connector.accounts,
+        approveRequest: (response: Partial<IJsonRpcResponseSuccess>): void => {
+          connector.approveRequest(response)
+        },
+        approveSession: (sessionStatus: ISessionStatus): void => {
+          connector.approveSession(sessionStatus)
+        },
+        bridge: connector.bridge,
+        chainId: connector.chainId,
+        clientId: connector.clientId,
+        clientMeta: connector.clientMeta,
+        connect: (opts?: ICreateSessionOptions): Promise<ISessionStatus> => {
+          return connector.connect(opts)
+        },
+        connected: connector.connected,
+        createSession: (opts?: ICreateSessionOptions): Promise<void> => {
+          return connector.createSession(opts)
+        },
+        handshakeId: connector.handshakeId,
+        handshakeTopic: connector.handshakeTopic,
+        key: connector.key,
+        killSession: (sessionError?: ISessionError): Promise<void> => {
+          return connector.killSession(sessionError)
+        },
+        networkId: connector.networkId,
+        on: (event: string, callback: (error: Error | null, payload: any | null) => void) => {
+          // console.log('event', event)
+          // console.log('callback', callback)
+          if (event === 'connect') {
+            connector.connect({
+              chainId: 1,
+            })
+          } else {
+            connector.on(event, callback)
+          }
+        },
+        peerId: connector.peerId,
+        peerMeta: connector.peerMeta,
+        pending: connector.pending,
+        rejectRequest: (response: Partial<IJsonRpcResponseError>): void => {
+          connector.rejectRequest(response)
+        },
+        rejectSession: (sessionError?: ISessionError): void => {
+          connector.rejectSession(sessionError)
+        },
+        rpcUrl: connector.rpcUrl,
+        sendCustomRequest: (
+          request: Partial<IJsonRpcRequest>,
+          options?: IRequestOptions,
+        ): Promise<any> => {
+          return connector.sendCustomRequest(request, options)
+        },
+        sendTransaction: (tx: ITxData): Promise<any> => {
+          return connector.sendTransaction(tx)
+        },
+        session: connector.session,
+        signMessage: (params: any[]): Promise<any> => {
+          return connector.signMessage(params)
+        },
+        signPersonalMessage: (params: any[]): Promise<any> => {
+          return connector.signPersonalMessage(params)
+        },
+        signTransaction: (tx: ITxData): Promise<any> => {
+          return connector.signTransaction(tx)
+        },
+        signTypedData: (params: any[]): Promise<any> => {
+          return connector.signTypedData(params)
+        },
+        unsafeSend: (
+          request: IJsonRpcRequest,
+          options?: IRequestOptions,
+        ): Promise<IJsonRpcResponseSuccess | IJsonRpcResponseError> => {
+          return connector.unsafeSend(request, options)
+        },
+        updateChain: (chainParams: IUpdateChainParams): Promise<any> => {
+          return connector.updateChain(chainParams)
+        },
+        updateSession: (sessionStatus: ISessionStatus): void => {
+          connector.updateSession(sessionStatus)
+        },
+        uri: connector.uri,
+      },
+      // connector: connector,
       qrcode: false,
       rpc: {
         1: 'https://main-rpc.linkpool.io',
       },
     })
 
-    await provider.enable()
-    const res = await orbis.connect(provider)
+    orbis
+      .connect(provider)
+      .then((res) => {
+        console.log(res)
+        if (res.status == 200) {
+          console.log('Connected')
+          console.log(res.did)
+        } else {
+          console.log('Error connecting to Ceramic: ', res)
+          // alert('Error connecting to Ceramic.')
+        }
+      })
+      .catch((err) => {
+        console.log(err)
+        // alert('Error connecting to Ceramic.')
+      })
 
-    // if (res.status == 200) {
-    //   console.log(res.did)
-    // } else {
-    //   console.log('Error connecting to Ceramic: ', res)
-    //   // alert('Error connecting to Ceramic.')
-    // }
-
-    const wc = await connector.connect({
-      chainId: 137,
-    })
+    // const wc = await connector.connect({
+    //   chainId: 137,
+    // })
 
     // setWallet({
     //   origin: 'walletconnect',
@@ -61,6 +162,12 @@ export default function ConnectWallet() {
       </TouchableOpacity>
       <TouchableOpacity onPress={killSession} style={styles.buttonStyle}>
         <Text style={styles.buttonTextStyle}>Use Email</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={async () => console.log(await orbis.isConnected())}
+        style={styles.buttonStyle}
+      >
+        <Text style={styles.buttonTextStyle}>Is Connected</Text>
       </TouchableOpacity>
     </View>
   )
